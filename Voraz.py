@@ -9,6 +9,13 @@ def voraz(monto):
         cantidad = monto // valor
         cantidades.append(cantidad)
         monto = monto % valor
+        if cantidad > 0:
+            soles = monto // 100
+            centavos = monto % 100
+
+            restante = str(soles) + "." + str(centavos).zfill(2)
+
+            print(f"S/{denominacion:<5} {cantidad:<3} {restante:>8}")
 
     return cantidades
 
@@ -16,9 +23,3 @@ def voraz(monto):
 monto = 179.45
 
 respuesta = voraz(monto)
-
-denominaciones = [200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.20, 0.10, 0.05]
-
-for posicion in range(len(denominaciones)):
-    if respuesta[posicion] > 0:
-        print(respuesta[posicion], "de S/", denominaciones[posicion])
